@@ -18,6 +18,7 @@ from django.urls import path
 from apps.core.views import homepage,signup
 from apps.feeds.views import feeds
 from django.contrib.auth import views
+from apps.feeds.api import add_new_post
 
 urlpatterns = [
     path('',homepage, name="homepage"),
@@ -26,8 +27,12 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(template_name='core/login.html'), name="login"),
     
     # Feed
-    
     path('feeds/', feeds, name="feeds"),
+    
+    #API
+    path('api/add_post',add_new_post,name="add_new_post"),
+    
+    
     
     # Admim
     path('admin/', admin.site.urls),

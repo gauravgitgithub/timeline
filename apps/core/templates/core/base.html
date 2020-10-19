@@ -1,4 +1,7 @@
 <!doctype html>
+
+{% load static %}
+
 <html lang="en">
 
 <head>
@@ -9,6 +12,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <title>Timeline</title>
 </head>
@@ -55,6 +59,10 @@
     </section>
     <!-- Content End  -->
 
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" ></script>
+    {% block script %}
+    {% endblock %}
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
