@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .models import Post
 
@@ -14,3 +15,18 @@ def feeds(request):
 
     posts = Post.objects.filter(created_by_id__in=userid)    
     return render(request, 'feed/feeds.html',{'posts':posts})
+
+@login_required
+def search(request):
+    query = request.GET.get('query','')
+    if len(query) > 0:
+        users = User.objects.filter(username__icontains=query)
+    else:
+        users = []
+        
+    context = {
+        'query': query,
+        'matches': users
+    }    
+
+    return render(request, 'feed/search.html',context)

@@ -12,8 +12,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+    <script src="https://kit.fontawesome.com/118a582ff3.js" crossorigin="anonymous"></script>
     <title>Timeline</title>
 </head>
 
@@ -31,7 +32,13 @@
                 <ul class="navbar-nav ml-auto">
                     {% if request.user.is_authenticated %}
                     <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'userprofile' request.user.username %}">Profile</a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" href="{% url 'feeds' %}">Feeds</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'search' %}">Search</a>
                     </li>
                     {% endif %}
                     {% if request.user.is_authenticated %}

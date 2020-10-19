@@ -1,5 +1,5 @@
 {% extends 'core/base.html' %}
-
+{% load humanize %}
 {% block content %}
 <div class="container" id="feeds">
     <div class="columns">
@@ -31,7 +31,7 @@
                 <div class="feed">
                     <p class="name"> {{ post.created_by.username }} </p>
                     <p>{{ post.body }}</p>
-                    <p class="info"> {{  post.created_at }} </p>
+                    <p class="info"> {{  post.created_at|naturaltime }} </p>
 
                 </div>
                 {% endfor %}
