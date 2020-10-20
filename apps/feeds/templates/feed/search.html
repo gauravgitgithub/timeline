@@ -27,7 +27,23 @@
 
             <div class="search-results">
                 {% for user in matches %}
-                    <p><a href="{% url 'userprofile' user.username %}">{{ user.username }}</a></p>
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                                {% if user.userprofile.avatar %}
+                                <img class="is-rounded" src="{{ user.userprofile.avatar.url }}"
+                                    alt="{{ user.userprofile.username }}" title="{{ user.userprofile.username }}" />
+                                {% endif %}
+                            </p>
+                    
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                                <p><a href="{% url 'userprofile' user.username %}">{{ user.username }}</a></p>
+                            </div>
+                        </div>
+                    </article>
+                    
                 {% endfor %}
             </div>
         </div>

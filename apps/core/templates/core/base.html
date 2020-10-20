@@ -40,6 +40,9 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="{% url 'search' %}">Search</a>
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+                    </li>
                     {% endif %}
                     {% if request.user.is_authenticated %}
                     <li class="nav-item">

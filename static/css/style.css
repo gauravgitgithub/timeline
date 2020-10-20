@@ -30,6 +30,10 @@ body {
   color: #7f8c8d !important;
 }
 
+.follows-block figure {
+  margin-right: 20px;
+}
+
 .follows-block .followers a {
   margin-right: 20px;
   text-decoration: none;

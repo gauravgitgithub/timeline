@@ -29,10 +29,27 @@
                 </div>
                 {% for post in posts %}
                 <div class="feed">
-                    <p class="name"> {{ post.created_by.username }} </p>
-                    <p>{{ post.body }}</p>
-                    <p class="info"> {{  post.created_at|naturaltime }} </p>
-
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                                {% if post.created_by.userprofile.avatar %}
+                                <img class="is-rounded" src="{{ post.created_by.userprofile.avatar.url }}" alt="{{ post.created_by.userprofile.username }}"
+                                    title="{{ post.created_by.userprofile.username }}" />
+                                {% endif %}
+                            </p>
+                    
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong>{{ post.created_by.username }}</strong>
+                                    {{  post.created_at|naturaltime }}
+                                    <br />
+                                    {{ post.body }}
+                                </p>
+                            </div>
+                        </div>
+                    </article>
                 </div>
                 {% endfor %}
 

@@ -6,6 +6,12 @@
         <div class="column is-12">
             <h1 class="title">{{ user.username  }}</h1>
             <div class="follows-block">
+                {% if user.userprofile.avatar %}
+                <figure class="image is-128x128">
+                    <img class="is-rounded"  src="{{ user.userprofile.avatar.url }}" alt="{{ user.userprofile.username }}"
+                        title="{{ user.userprofile.username }}" />
+                </figure>
+                {% endif %}
                 <p class="followers"><a href="{% url 'followers' user.username %}">Followers : {{  user.userprofile.followed_by.count }}</a></p>
                 <p class="following"><a href="{% url 'follows' user.username %}">Follows : {{  user.userprofile.follows.count }}</a></p>
             </div>
@@ -23,10 +29,27 @@
             <div class="wrapper-feeds">
                 {% for post in user.posts.all %}
                 <div class="feed">
-                    <p class="name"> {{ post.created_by.username }} </p>
-                    <p>{{ post.body }}</p>
-                    <p class="info"> {{  post.created_at|naturaltime }} </p>
-            
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                                {% if user.userprofile.avatar %}
+                                    <img class="is-rounded" src="{{ user.userprofile.avatar.url }}" alt="{{ user.userprofile.username }}"
+                                        title="{{ user.userprofile.username }}" />
+                                {% endif %}
+                            </p>
+
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                                    <p>
+                                        <strong>{{ post.created_by.username }}</strong>
+                                        {{  post.created_at|naturaltime }}
+                                        <br/>
+                                        {{ post.body }}
+                                    </p>
+                            </div>
+                        </div>
+                    </article>        
                 </div>
                 {% endfor %}
             
