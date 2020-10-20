@@ -29,7 +29,7 @@ from apps.userprofile.views import (
     follows,
 )
 from django.contrib.auth import views
-from apps.feeds.api import add_new_post
+from apps.feeds.api import add_new_post, like_feed
 
 urlpatterns = [
     path("", homepage, name="homepage"),
@@ -49,6 +49,7 @@ urlpatterns = [
     path("u/<str:username>/unfollow/", unfollow_user, name="unfollow_user"),
     # API
     path("api/add_post", add_new_post, name="add_new_post"),
+    path("api/like_feed", like_feed, name="like_feed"),
     # Admim
     path("admin/", admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

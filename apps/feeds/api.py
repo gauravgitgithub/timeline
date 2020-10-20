@@ -1,16 +1,26 @@
 import json
 
 from django.http import JsonResponse
-from .models import Post
+from .models import Post, Like
 from django.contrib.auth.decorators import login_required
+
 
 @login_required
 def add_new_post(request):
     data = json.loads(request.body)
-    body = data['body']
-    
+    body = data["body"]
+
     post = Post.objects.create(body=body, created_by=request.user)
-    
-    
-    return JsonResponse({'success':True})
-    
+
+    return JsonResponse({"success": True})
+
+
+@login_required
+def like_feed(request):
+    data = json.loads(request.body)
+    post_id = data["post_id"]
+
+    if not Like.objects.filter(post_id=post_id).filter(created_by=request.user).exists():
+        like = Like.objects.create(post_id=post_id, created_by=request.user)
+
+    return JsonResponse({success: True})
