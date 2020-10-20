@@ -22,9 +22,27 @@
             </div>
             <div class="wrapper-feeds">
                 <div class="feed" v-for="post in posts">
-                    <p class="name"> [[ post.user_posted ]] </p>
-                    <p>[[ post.body ]]</p>
-                    <p class="info"> [[ post.created_at ]] </p>
+                    <article class="media">
+                        <figure class="media-left">
+                            <p class="image is-64x64">
+                                {% if user.userprofile.avatar %}
+                                <img class="is-rounded" src="{{ user.userprofile.avatar.url }}"
+                                    alt="{{ user.userprofile.username }}" title="{{ user.userprofile.username }}" />
+                                {% endif %}
+                            </p>
+                    
+                        </figure>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong>[[ post.user_posted ]]</strong>
+                                    [[ post.created_at ]]
+                                    <br />
+                                    [[ post.body ]]
+                                </p>
+                            </div>
+                        </div>
+                    </article>
 
                 </div>
                 {% for post in posts %}
