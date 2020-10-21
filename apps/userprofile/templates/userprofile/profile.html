@@ -4,7 +4,7 @@
 <div class="container" id="profilefeeds">
     <div class="columns">
         <div class="column is-12">
-            <h1 class="title">{{ user.username  }}</h1>
+            <h1 class="title">{{ user.username  }} {% if user.userprofile.followed_by.count > 2 %} &nbsp;<i class="fas fa-check-circle profile_verified"></i>{% endif %}</h1>
             <div class="follows-block">
                 {% if user.userprofile.avatar %}
                 <figure class="image is-128x128">
@@ -42,7 +42,7 @@
                         <div class="media-content">
                             <div class="content">
                                     <p>
-                                        <strong>{{ post.created_by.username }}</strong>
+                                        <strong>{{ post.created_by.username }} {% if user.userprofile.followed_by.count > 2 %} &nbsp;<i class="fas fa-check-circle profile_verified"></i>{% endif %}</strong>
                                         {{  post.created_at|naturaltime }}
                                         <br/>
                                         {{ post.body }}
