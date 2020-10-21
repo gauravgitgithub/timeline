@@ -18,7 +18,7 @@ def userprofile(request, username):
         else:
             post.liked = False
 
-    context = {"user": user, 'posts': posts}
+    context = {"user": user, "posts": posts}
     return render(request, "userprofile/profile.html", context)
 
 
