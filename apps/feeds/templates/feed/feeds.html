@@ -60,7 +60,7 @@
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong>{{ post.created_by.username }} {% if post.user.userprofile.followed_by.count > 2 %} &nbsp;<i class="fas fa-check-circle profile_verified"></i>{% endif %} </strong>
+                                    <strong><a href="{% url 'userprofile' post.created_by.username %}">{{ post.created_by.username }}</a> {% if post.user.userprofile.followed_by.count > 2 %} &nbsp;<i class="fas fa-check-circle profile_verified"></i>{% endif %} </strong>
                                     {{  post.created_at|naturaltime }}
                                     <br />
                                     {{ post.body }}
