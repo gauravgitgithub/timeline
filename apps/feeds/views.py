@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -17,8 +17,10 @@ def feeds(request):
         userid.append(user_posted.user.id)
 
     posts = Post.objects.filter(created_by_id__in=userid)
+
     for post in posts:
         likes = post.likes.filter(created_by_id=request.user.id)
+        post.user = get_object_or_404(User, username=post.created_by.username)
         if likes.count() > 0:
             post.liked = True
         else:
