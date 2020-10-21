@@ -26,7 +26,7 @@ SECRET_KEY = "jxf7z*8(*!+79k_g_tb@m*01kd9*o^v=s=x^6kei(ibys6&$-y"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['social-timeline-app.herokuapp.com', '127.0.0.1']
 
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "feeds"
